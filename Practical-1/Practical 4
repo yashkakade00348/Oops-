@@ -1,0 +1,33 @@
+#include <iostream>
+#include <memory>
+using namespace std;
+
+class Demo {
+public:
+    Demo() {
+        cout << "Memory allocated" << endl;
+    }
+    ~Demo() {
+        cout << "Memory released" << endl;
+    }
+};
+
+int main() {
+    cout << "Using unique_ptr:" << endl;
+    {
+        unique_ptr<Demo> ptr1 = make_unique<Demo>();
+    }
+
+    cout << "\nUsing shared_ptr:" << endl;
+    {
+        shared_ptr<Demo> ptr2 = make_shared<Demo>();
+        cout << "Reference count: " << ptr2.use_count() << endl;
+        {
+            shared_ptr<Demo> ptr3 = ptr2;
+            cout << "Reference count: " << ptr2.use_count() << endl;
+        }
+    }
+
+    cout << "\nProgram completed successfully" << endl;
+    return 0;
+}

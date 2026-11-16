@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    vector<int> marks = {85, 70, 90, 65, 80};
+    
+    cout << "Students Marks: ";
+    for(auto i = marks.begin(); i != marks.end(); i++)
+    {
+        cout << *i << " ";
+    }
+    cout << endl;
+    
+    sort(marks.begin(), marks.end());
+    
+    cout << "Sorted Marks: ";
+    for(auto i = marks.begin(); i != marks.end(); i++)
+    {
+        cout << *i << " ";
+    }
+    cout << endl;
+    
+    auto it = find(marks.begin(), marks.end(), 90);
+    if(it != marks.end())
+    {
+        cout << "90 Marks Found" << endl;
+    }
+    else
+    {
+        cout << "Marks Not Found" << endl;
+    }
+    
+    map<int, int> student;
+    student[101] = 85;
+    student[102] = 70;
+    student[103] = 90;
+    student[104] = 65;
+    student[105] = 80;
+    
+    cout << "Student Records:" << endl;
+    for(auto i = student.begin(); i != student.end(); i++)
+    {
+        cout << i->first << " = " << i->second << endl;
+    }
+    
+    return 0;
+}

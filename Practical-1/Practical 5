@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string> 
+using namespace std;
+
+class Person
+{
+protected:
+    string name;
+    int id;
+public:
+    void info(string a, int b)
+    {
+        name = a;
+        id = b;
+    }
+    void PersonInfo() 
+    {
+        cout << "Person Name: " << name << endl;
+        cout << "Person ID: " << id << endl;
+    }
+};
+
+class Student : public Person
+{
+protected:
+    string StudentName;
+    string major;
+public:
+    void info1(string c, string d)
+    {
+        StudentName = c;
+        major = d;
+    }
+    void StudentInfo()
+    {
+        cout << "Student Name: " << StudentName << endl;
+        cout << "Student Major: " << major << endl;
+    }
+};
+
+class GraduateStudent : public Student
+{
+public:
+    string gs_name;
+    string gs_major;
+    int gs_year;
+    void GSInfo()
+    {
+        cout << "Graduate Student Name: " << gs_name << endl;
+        cout << "Graduate Student Major: " << gs_major << endl;
+        cout << "Graduating year: " << gs_year << endl;
+    }
+};
+
+int main()
+{
+    cout << "--- Inheritance Single - Multilevel ---" << endl;
+    GraduateStudent s1;
+    
+    s1.info("YASH", 1);
+    s1.PersonInfo();
+    
+    s1.info1("SHREYA", "COMPUTER SCIENCE");
+    s1.StudentInfo();
+    
+    s1.gs_name = "ABHI";
+    s1.gs_major = "MATHS";
+    s1.gs_year = 2025;
+    s1.GSInfo();
+    
+    return 0;
+}

@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int balance = 5000;
+    int amount;
+    
+    cout << "Enter withdrawal amount: ";
+    cin >> amount;
+    
+    try
+    {
+        if(amount <= 0)
+        {
+            throw 1;
+        }
+        
+        if(amount > balance)
+        {
+            throw 2;
+        }
+        
+        balance = balance - amount;
+        
+        cout << "Transaction Successful" << endl;
+        cout << "Remaining Balance: " << balance << endl;
+    }
+    catch(int e)
+    {
+        if(e == 1)
+        {
+            cout << "Invalid Amount" << endl;
+        }
+        else if(e == 2)
+        {
+            cout << "Insufficient Balance" << endl;
+        }
+    }
+    
+    return 0;
+}

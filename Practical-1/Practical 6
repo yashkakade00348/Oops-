@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+
+class Shape
+{
+public:
+    virtual void area() = 0;
+    virtual ~Shape() {}
+};
+
+class Rectangle : public Shape
+{
+private:
+    int length;
+    int breadth;
+public:
+    Rectangle(int l, int b)
+    {
+        length = l;
+        breadth = b;
+    }
+    void area() override
+    {
+        cout << "Area of Rectangle: " << length * breadth << endl;
+    }
+};
+
+class Triangle : public Shape
+{
+private:
+    int base;
+    int height;
+public:
+    Triangle(int b, int h)
+    {
+        base = b;
+        height = h;
+    }
+    void area() override
+    {
+        cout << "Area of Triangle: " << 0.5 * base * height << endl;
+    }
+};
+
+class Circle : public Shape
+{
+private:
+    int radius;
+public:
+    Circle(int r)
+    {
+        radius = r;
+    }
+    void area() override
+    {
+        cout << "Area of Circle: " << 3.14 * radius * radius << endl;
+    }
+};
+
+int main()
+{
+    cout << "--- Runtime Polymorphism using Virtual Functions ---" << endl << endl;
+    
+    Shape* s1 = new Rectangle(5, 10);
+    Shape* s2 = new Triangle(5, 10);
+    Shape* s3 = new Circle(3);
+    
+    s1->area();
+    s2->area();
+    s3->area();
+    
+    delete s1;
+    delete s2;
+    delete s3;
+    
+    return 0;
+}
